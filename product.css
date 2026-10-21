@@ -1,0 +1,118 @@
+:root {
+  color-scheme: light dark;
+  --page: #f5f3ed;
+  --surface: #fffefa;
+  --ink: #173b3d;
+  --muted: #405959;
+  --accent: #296b70;
+  --line: #c9d5cf;
+  --moss: #9ab2a0;
+  --sand: #e8c994;
+  --clay: #b87f63;
+}
+
+* { box-sizing: border-box; }
+html { scroll-padding-top: 1.5rem; }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font: 1.125rem/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-wrap: break-word;
+}
+.wrap { width: min(72rem, calc(100% - 2.5rem)); margin-inline: auto; }
+a { color: inherit; text-underline-offset: .22em; }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+h1, h2, h3 { text-wrap: balance; }
+h2 { max-width: 24ch; margin: .4rem 0 1.25rem; font-size: clamp(1.8rem, 3.5vw, 2.7rem); line-height: 1.15; letter-spacing: -.025em; }
+h3 { margin: .6rem 0; font-size: 1.35rem; line-height: 1.3; }
+p { max-width: 65ch; }
+section { margin-bottom: 4rem; }
+
+.skip-link {
+  position: absolute;
+  inset-inline-start: .75rem;
+  top: -8rem;
+  padding: .75rem 1rem;
+  background: var(--surface);
+  z-index: 2;
+}
+.skip-link:focus { top: .75rem; }
+.site-header, .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.site-header { padding-block: 1.25rem; }
+.brand { display: inline-flex; align-items: center; min-height: 44px; font-size: 1.3rem; font-weight: 750; text-decoration: none; }
+nav { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
+nav a { display: inline-flex; align-items: center; min-height: 44px; }
+.language-nav { font-size: 1rem; }
+a[aria-current="page"] { font-weight: 750; text-decoration-thickness: 2px; }
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 6rem);
+  padding-block: clamp(2rem, 5vw, 4.5rem);
+}
+.hero-copy { min-width: 0; }
+.eyebrow { margin-block: 0 .5rem; font-size: .94rem; font-weight: 650; color: var(--accent); }
+h1 { max-width: 13ch; font-size: clamp(2.6rem, 6vw, 5rem); line-height: 1.06; letter-spacing: -.035em; margin-block: .6rem 1.5rem; }
+.intro { margin-bottom: 1.75rem; }
+.store-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  min-height: 3.25rem;
+  padding: .8rem 1.3rem;
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+.store-link:hover { text-decoration: underline; }
+.platforms { margin-block: .75rem 0; color: var(--muted); font-size: 1rem; }
+.strata { overflow: hidden; border: 1px solid var(--line); border-radius: 2rem; aspect-ratio: 4/5; background: var(--surface); }
+.strata span { display: block; height: 29%; width: 160%; margin-inline-start: -25%; transform: rotate(-12deg); border-radius: 45%; }
+.strata span:nth-child(1) { background: var(--sand); }
+.strata span:nth-child(2) { background: var(--moss); }
+.strata span:nth-child(3) { background: var(--clay); }
+.strata span:nth-child(4) { background: var(--accent); }
+
+.features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.75rem; }
+.features article, .comparison { padding: clamp(1.25rem, 3vw, 2rem); border: 1px solid var(--line); border-radius: 1.4rem; background: var(--surface); }
+.feature-number { font-size: .94rem; font-weight: 650; color: var(--muted); }
+.features p { margin-bottom: 0; }
+.comparison { max-width: 58rem; }
+.comparison p:last-child { margin-bottom: 0; }
+.safety-note { padding-top: 1.1rem; border-top: 1px solid var(--line); color: var(--muted); }
+.privacy-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem 4rem; }
+.privacy-section > p { margin-top: 0; }
+.site-footer { padding-block: 1.5rem 2.5rem; border-top: 1px solid var(--line); font-size: 1rem; }
+.footer-row p { margin-block: 0; }
+.hosting-note { margin-block: 1rem 0; color: var(--muted); font-size: .94rem; }
+
+@media (max-width: 48rem) {
+  .hero, .privacy-section { grid-template-columns: 1fr; }
+  .strata { max-height: 14rem; aspect-ratio: 2/1; }
+  .features { grid-template-columns: 1fr; }
+  section { margin-bottom: 3rem; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #102526;
+    --surface: #193536;
+    --ink: #edf4ee;
+    --muted: #c1d2ca;
+    --accent: #8ed1c9;
+    --line: #46635d;
+  }
+  .store-link { color: #102526; }
+}
+
+@media (forced-colors: active) {
+  .store-link { border-color: ButtonText; }
+  .strata { visibility: hidden; }
+}
